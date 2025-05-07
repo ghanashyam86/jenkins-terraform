@@ -5,7 +5,7 @@ resource "aws_instance" "public_instance" {
   subnet_id = aws_subnet.public_subnet[count.index].id
   vpc_security_group_ids = [aws_security_group.vpc-demo-security-groups.id]
   key_name = "n.verginia633"
-  availability_zone = data.aws_availability_zones.available[count.index]
+  availability_zone = var.vpc_azs[count.index]
   
   tags = {
     Name = "${var.vpc_name}-server-${count.index + 1}"
