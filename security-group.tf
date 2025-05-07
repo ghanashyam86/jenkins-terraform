@@ -12,7 +12,7 @@ variable "egress_ports" {
 
  resource "aws_security_group" "vpc-demo-security-groups" {
      name = "dynamic-security-group"
-     vpc_id = module.vpc.vpc_id
+     vpc_id = aws_vpc.main.id
 
    dynamic "ingress" {
      for_each = var.ingress_ports
